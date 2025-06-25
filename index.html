@@ -1,122 +1,180 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>MosaicVivo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MosaicVivo</title>
 
+    <!-- Link para Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-   <link rel="stylesheet" href="style.css">
-   <!-- Fonte do Google Fonts -->
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-   <style>
-       /* Estilos globais */
-       * {
-           margin: 0;
-           padding: 0;
-           box-sizing: border-box;
-       }
+    <!-- Estilos CSS -->
+    <style>
+        /* Estilos globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        /* Corpo da página */
+        body {
+            background-image: url('https://example.com/sua-imagem.jpg'); /* Substitua pelo link da sua imagem */
+            background-size: cover;
+            background-position: center;
+            color: white; /* Cor do texto agora será branca */
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            flex-direction: column;
+            overflow: hidden;
+            background-attachment: fixed;
+        }
 
-       body {
-           background-image: url('https://example.com/sua-imagem.jpg'); /* Substitua pelo link da sua imagem */
-           background-size: cover;
-           background-position: center;
-           color: black; /* Cor do texto agora será preta */
-           font-family: 'Poppins', sans-serif;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           height: 100vh;
-           margin: 0;
-           text-align: center;
-           flex-direction: column;
-           overflow: hidden;
-           background-attachment: fixed; /* A imagem de fundo vai ficar fixa */
-       }
+        /* Títulos e parágrafos */
+        h1, h2, p {
+            margin: 20px 0;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7); /* Sombra no texto para destacar */
+        }
 
+        /* Título principal */
+        h1 {
+            font-size: 4.5rem; /* Aumentei o tamanho da fonte */
+            font-weight: 700; /* Fonte mais pesada para o título */
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
 
-       h1, h2, p {
-           margin: 20px 0;
-           letter-spacing: 1px;
-           text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Sombra no texto para melhorar legibilidade */
-       }
+        h1:hover {
+            transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+            color: #FF6347; /* Cor laranja vibrante */
+        }
 
+        /* Subtítulo */
+        h2 {
+            font-size: 2.5rem; /* Aumentei o tamanho da fonte */
+            font-weight: 400;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
 
-       h1 {
-           font-size: 3rem;
-           font-weight: 600;
-           transition: transform 0.3s ease, color 0.3s ease;
-       }
+        h2:hover {
+            opacity: 1;
+        }
 
+        /* Parágrafo */
+        p {
+            font-size: 1.4rem; /* Aumentei o tamanho da fonte */
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 300;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
 
-       h1:hover {
-           transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
-           color: #1900f9; /* Cor azul*/
-       }
+        p:hover {
+            opacity: 1;
+            color: #ddd;
+        }
 
+        /* Vídeo incorporado */
+        iframe {
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Maior sombra para o vídeo */
+            transition: transform 0.3s ease;
+            width: 100%;
+            max-width: 900px;
+            height: 500px;
+        }
 
-       h2 {
-           font-size: 1.8rem;
-           font-weight: 400;
-           opacity: 0.9;
-           transition: opacity 0.3s ease;
-       }
+        iframe:hover {
+            transform: scale(1.05); /* Efeito de aumento no vídeo */
+        }
 
+        /* Botão de ação (CTA) */
+        .cta-button {
+            padding: 15px 30px;
+            background-color: #FF4500;
+            color: #fff;
+            font-size: 1.5rem; /* Aumentei o tamanho da fonte */
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 30px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
 
-       h2:hover {
-           opacity: 1;
-       }
+        .cta-button:hover {
+            background-color: #FF6347;
+            transform: translateY(-5px);
+        }
 
+        /* Container */
+        .container {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
 
-       p {
-           font-size: 1.2rem;
-           line-height: 1.6;
-           max-width: 800px;
-           margin: 0 auto;
-           font-weight: 300;
-           opacity: 0.85;
-           transition: opacity 0.3s ease;
-       }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
 
+        /* Media Query para Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem; /* Ajuste para telas menores */
+            }
 
-       p:hover {
-           opacity: 1;
-       }
+            h2 {
+                font-size: 2rem;
+            }
 
+            p {
+                font-size: 1.2rem;
+                max-width: 95%;
+            }
 
-       iframe {
-           border-radius: 12px;
-           box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra no vídeo */
-           transition: transform 0.3s ease;
-       }
+            iframe {
+                height: 300px;
+            }
 
-
-       iframe:hover {
-           transform: scale(1.05); /* Efeito de aumento no vídeo */
-       }
-
-
-       /* Adicionando um efeito de transição suave no fundo */
-       .container {
-           transition: background-color 0.5s ease;
-       }
-
-
-       .container:hover {
-           background-color: rgba(255, 253, 253, 0.3); /* Efeito de escurecimento do fundo */
-       }
-   </style>
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-   <div class="container">
-       <h1><strong>Rumo ao Inexplorado: Destinos Imperdíveis para Viagens e Aventuras Inesquecíveis</strong></h1>
-       <h2>Destinos Imperdíveis para Viagem e Aventura: Explorando o Mundo ao Seu Redor</h2>
-       <p>Convida você a sair da rotina e embarcar em experiências que desafiam o comum. Do misticismo das montanhas nevoentas à tranquilidade das praias intocadas, o mundo está repleto de lugares fascinantes, prontos para revelar segredos únicos e inesquecíveis. Seja para explorar a natureza selvagem, mergulhar em culturas fascinantes ou simplesmente se perder em paisagens deslumbrantes, cada destino oferece uma nova perspectiva sobre o que significa viver uma verdadeira aventura. Prepare-se para viajar além dos limites do esperado e descobrir lugares que vão mudar a maneira como você vê o mundo!</p>
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/6CwI5f9ttJI?si=Xa5uPB6GSzOOGBdX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-   </div>
+    <div class="container">
+        <!-- Título principal -->
+        <h1><strong>Rumo ao Inexplorado: Destinos Imperdíveis para Viagens e Aventuras Inesquecíveis</strong></h1>
+
+        <!-- Subtítulo -->
+        <h2>Destinos Imperdíveis para Viagem e Aventura: Explorando o Mundo ao Seu Redor</h2>
+
+        <!-- Descrição do conteúdo -->
+        <p>
+            Convidamos você a romper as barreiras da rotina e se aventurar em experiências que desafiam o comum. Desde o misticismo das <strong>montanhas cobertas de névoa</strong> até a serenidade das <strong>praias inexploradas</strong>, o mundo está repleto de destinos fascinantes, esperando para revelar segredos inesquecíveis. <br><br>
+            Seja para explorar a <strong>natureza selvagem</strong>, se perder em <strong>culturas vibrantes</strong> ou simplesmente se encantar com paisagens deslumbrantes, cada lugar oferece uma nova perspectiva sobre o que significa viver uma verdadeira aventura. <br><br>
+            Prepare-se para ir além dos seus limites, descobrir destinos surpreendentes e vivenciar momentos que transformarão a maneira como você vê o mundo!
+        </p>
+
+        <!-- Vídeo incorporado -->
+        <iframe src="https://www.youtube.com/embed/6CwI5f9ttJI?si=Xa5uPB6GSzOOGBdX" title="YouTube video player" allowfullscreen></iframe>
+
+        <!-- Botão de chamada para ação -->
+        <a href="#" class="cta-button">Explore Agora</a>
+    </div>
 </body>
 </html>
-
-
-
